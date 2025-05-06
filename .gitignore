@@ -1,6 +1,9 @@
 # mlx
 mlx/*
 
+# Swap files
+*.swp
+
 # Prerequisites
 *.d
 
