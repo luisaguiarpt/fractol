@@ -12,8 +12,8 @@ void	put_circle(void *img, int h, int w, int color);
 void	put_sq_triangle(void *img, int h, int w, int color);
 void	put_triangle(void *img, int h, int w, int color);
 void	plot_mandlebrot(void *img, int h, int w);
-int	iter_eval(double complex c, int max_iter);
-int	get_color(int i, int w);
+int		iter_eval(double complex c, int max_iter);
+int		get_color(int i, int w);
 
 int	main(void)
 {
@@ -27,6 +27,7 @@ int	main(void)
 	win = mlx_new_window(mlx, WIN_SX, WIN_SY, "Julia");
 	if (!win)
 		exit(1);
+	mlx_key_hook(win, 
 	img = data_init();
 	if (!img)
 		exit(1);
@@ -53,9 +54,8 @@ void	plot_mandlebrot(void *img, int h, int w)
 		y = 1;
 		while (y < h)
 		{
-			c = (x / 1000) + (y / 1000) * I;
+			c = ((x - 500) / 250) + ((y - 500) / 250) * I;
 			pixel_put(img, x, y, get_color(iter_eval(c, max_iter), w));
-		//	printf("%i|", iter_eval(c, max_iter));
 			y++;
 		}
 		x++;
