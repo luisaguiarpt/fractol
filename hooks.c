@@ -36,13 +36,13 @@ int	mouse_hook(int button, int x, int y, t_core *core)
 	ft_printf("Mouse at %dx%d.\n", x, y);
 	if (button == SCR_UP)
 	{
-		core->fractal->zoom *= 1.1;
+		core->fractal->zoom *= 1.25;
 		core->fractal->x_offset = c.r - (x / core->fractal->zoom);
 		core->fractal->y_offset = c.i - (y / core->fractal->zoom);
 	}
 	else if (button == SCR_DOWN)
 	{
-		core->fractal->zoom /= 1.1;
+		core->fractal->zoom /= 1.25;
 		core->fractal->x_offset = c.r - (x / core->fractal->zoom);
 		core->fractal->y_offset = c.i - (y / core->fractal->zoom);
 	}
