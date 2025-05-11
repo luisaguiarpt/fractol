@@ -1,29 +1,33 @@
 CC=cc
 FLAGS=-Wall -Wextra -Werror -g
-INCS=mlx
+INCM=mlx
+INCP=ft_printf
 LIBS=-lmlx -lXext -lX11 -lm
 
-SRCS=fractol.c data_utils.c my_math.c
+SRCS=calc.c core.c utils.c fractol.c hooks.c print.c
 
 OBJS=$(SRCS:%.c=%.o)
 
 MLX=mlx/libmlx.a
+PRINTF=ft_printf/libftprintf.a
 NAME=fractol
 
 all: $(NAME)
 
-$(NAME): $(OBJS) makemlx
-	$(CC) $(FLAGS) $(OBJS) $(MLX) -o $@ -I$(INCS) $(LIBS)
+$(NAME): $(OBJS) makelibs
+	$(CC) $(FLAGS) $(OBJS) $(MLX) $(PRINTF) -o $@ -I$(INCS) $(LIBS)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@ -I$(INCS)
+	$(CC) $(FLAGS) -c $< -o $@ -I$(INCM) -I$(INCP)
 
-makemlx:
+makelibs:
 	make -C mlx/ all
+	make -C ft_printf/ all
 
 clean:
 	rm -rf $(OBJS)
 	make -C mlx/ clean
+	make -C ft_printf/ clean
 
 fclean: clean
 	rm -rf $(NAME)

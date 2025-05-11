@@ -1,25 +1,62 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+# include <stdlib.h>
+# include <math.h>
+# include "ft_printf/includes/ft_printf.h"
 # include "mlx/mlx.h"
 # include "mlx/mlx_int.h"
-# include <stdlib.h>
+# include "keys.h"
 
-typedef struct	s_data
+# define WIN_SX	1000
+# define WIN_SY	1000
+
+typedef struct	s_fractal
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	int		max_iter;
+	double	zoom;
+	double	x_offset;
+	double	y_offset;
+}				t_fractal;
 
-}				t_data;
+typedef	struct	s_core
+{
+	void		*mlx;
+	void		*win;
+	void		*img;
+	char		*img_addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	t_fractal	*fractal;
+	int			color;
+	int			psychadelic_mode;
+}				t_core;
 
-//	Struct functions
-t_data	*data_init(void);
-//	Put functions
-void	pixel_put(t_data *data, int x, int y, int color);
-//	Math functions
-int	sq(int x);
+typedef struct	s_complex
+{
+	double	r;
+	double	i;
+}				t_complex;
+
+//	Calc functions - calc.c
+int	calc_mandlebrot(int x, int y, t_fractal *f);
+
+//	Struct functions - core.c
+void		init_core(t_core *core);
+t_fractal	*init_fractal(void);
+void		close_program(t_core *core);
+
+// Hook functions - hook.c
+int	key_hook(int key, t_core *core);
+int	mouse_hook(int button, int x, int y, t_core *core);
+int	psychadelic_hook(t_core *core);
+
+//	Put functions - print.c
+void	pixel_put(t_core *core, int x, int y, int color);
+void	plot_set(t_core *core);
+
+// Aux functions - utils.c
+void	get_endian(t_core *core);
 
 #endif
