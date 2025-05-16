@@ -14,7 +14,7 @@ void	init_core(t_core *core)
 	get_endian(core);
 	core->img_addr = mlx_get_data_addr(core->img, &core->bpp, &core->line_len, &core->endian);
 	core->fractal = init_fractal();
-	core->color = 0x000f000f;
+	core->color = 0x000f000;
 	core->psychadelic_mode = 0;
 }
 

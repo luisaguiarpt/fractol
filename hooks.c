@@ -50,29 +50,63 @@ int	mouse_hook(int button, int x, int y, t_core *core)
 	return (0);
 }
 
+#define BASE_FREQUENCY	10
+#define NUM_HARMONICS	3
+
+int	clamp(int value, int min, int max)
+{
+	if (value < min)
+		return min;
+	if (value > max)
+		return max;
+	return (value);
+}
+
+void	apply_fourier(char *dst, float time)
+{
+	float	phase;
+	float	rgb[3];
+	int		i;
+	int		k;
+	int		size;
+	int		colors[3];
+
+	i = -1;
+	k = 0;
+	size = WIN_SX * WIN_SY;
+	while (++i < size * 4)
+	{
+		phase = time + i * BASE_FREQUENCY;
+		rgb[0] = 0;
+		while (++k <= NUM_HARMONICS)
+		{
+			rgb[0] += (1.0 / k) * sin(k * phase);
+			rgb[1] += (1.0 / k) * sin(k * phase + M_PI / 3);
+			rgb[2] += (1.0 / k) * sin(k * phase + 2 * M_PI / 3);
+		}
+		colors[0] = clamp((int)(127.5 * (1 + rgb[0])), 0, 255);
+		colors[1] = clamp((int)(127.5 * (1 + rgb[1])), 0, 255);
+		colors[2] = clamp((int)(127.5 * (1 + rgb[2])), 0, 255);
+		dst[i] += (colors[0] << 16) | (colors[1] << 8) | colors[2];
+	}
+}
+
 int	psychadelic_hook(t_core *core)
 {
-	int				i;
-	char			*dst;
-	static double	t;
-	int				rgb[3];
-	int				color;
+//	int				i;
+//	char			*dst;
+	static float	t;
+	//unsigned char	rgb[3];
 
 	if (!core->psychadelic_mode)
 		return (0);
 	t = 0;
-	i = 0;
-	while (i < WIN_SX * WIN_SY)
-	{
-		rgb[0] = (int)((sin(t + i * 0.8) * 0.00123 + 0.0013) * 255);
-		rgb[1] = (int)((sin(t + i * 1.6) * -0.00456 + 0.025) * 255);
-		rgb[2] = (int)((sin(t + i * 2.4) * 0.001823 + 0.0371) * 255);
-		color = (rgb[0] << 16) | (rgb[1] << 8) | rgb[2];
-		dst = core->img_addr + i * (core->bpp / 8);
-		*(unsigned int *)dst += color;
-		i++;
-	}	
+	apply_fourier(core->img_addr, t);
+	//dst = core->img_addr + i * (core->bpp / 8);
+	//*(unsigned int *)dst += color;
+	
 	mlx_put_image_to_window(core->mlx, core->win, core->img, 0, 0);
-	t += 0.01;
+	t += 0.1;
 	return 0;
 }
+
