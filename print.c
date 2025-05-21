@@ -13,7 +13,9 @@ void	plot_set(t_core *core)
 	int	x;
 	int	y;
 	int	i;
+	int	cutoff;
 
+	cutoff = 0.9 * core->fractal->max_iter;
 	x = 0;
 	while (x < WIN_SX)
 	{
@@ -21,7 +23,10 @@ void	plot_set(t_core *core)
 		while (y < WIN_SY)
 		{
 			i = calc_mandlebrot(x, y, core->fractal);
-			pixel_put(core, x, y, i * i * core->color);
+			if (i > cutoff)
+				pixel_put(core, x, y, 0);
+			else
+				pixel_put(core, x, y, i * i * core->color);
 			y++;
 		}
 		x++;

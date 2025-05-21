@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   core.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/21 17:54:41 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/21 23:36:13 by ldias-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 void	init_core(t_core *core)
@@ -14,8 +26,9 @@ void	init_core(t_core *core)
 	get_endian(core);
 	core->img_addr = mlx_get_data_addr(core->img, &core->bpp, &core->line_len, &core->endian);
 	core->fractal = init_fractal();
-	core->color = 0x000f000;
-	core->psychadelic_mode = 0;
+	core->color = 0x00f00f0;
+	core->psy_mode = 0;
+	core->fractal->intense = 169;
 }
 
 t_fractal	*init_fractal(void)
@@ -32,12 +45,13 @@ t_fractal	*init_fractal(void)
 	return (fractal);
 }
 
-void	close_program(t_core *core)
+int	close_program(t_core *core)
 {
 	mlx_destroy_image(core->mlx, core->img);
 	mlx_destroy_window(core->mlx, core->win);
 	mlx_destroy_display(core->mlx);
 	free(core->fractal);
+	free(core->mlx);
 	free(core);
-	exit(0);
+	exit (0);
 }

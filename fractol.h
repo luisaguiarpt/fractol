@@ -17,6 +17,7 @@ typedef struct	s_fractal
 	double	zoom;
 	double	x_offset;
 	double	y_offset;
+	int		intense;
 }				t_fractal;
 
 typedef	struct	s_core
@@ -30,7 +31,7 @@ typedef	struct	s_core
 	int			endian;
 	t_fractal	*fractal;
 	int			color;
-	int			psychadelic_mode;
+	int			psy_mode;
 }				t_core;
 
 typedef struct	s_complex
@@ -45,10 +46,12 @@ int	calc_mandlebrot(int x, int y, t_fractal *f);
 //	Struct functions - core.c
 void		init_core(t_core *core);
 t_fractal	*init_fractal(void);
-void		close_program(t_core *core);
+int			close_program(t_core *core);
 
 // Hook functions - hook.c
 int	key_hook(int key, t_core *core);
+int	key_hook_iter(int key, t_core *core);
+int	key_hook_zoom(int key, t_core *core);
 int	mouse_hook(int button, int x, int y, t_core *core);
 int	psychadelic_hook(t_core *core);
 

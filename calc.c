@@ -12,7 +12,7 @@ int	calc_mandlebrot(int x, int y, t_fractal *f)
 	i = 0;
 	z.r = 0.0;
 	z.i = 0.0;
-	while ((z.r * z.r + z.i * z.i) < 4 && i < f->max_iter)
+	while ((z.r * z.r + z.i * z.i) < 4 && i <= f->max_iter)
 	{
 		zr_temp = z.r * z.r - z.i * z.i + c.r;
 		z.i = 2 * z.r * z.i + c.i;
