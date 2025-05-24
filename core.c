@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 17:54:41 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/21 23:36:13 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/24 02:13:10 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ t_fractal	*init_fractal(void)
 		exit(1);
 	fractal->max_iter = 100;
 	fractal->zoom = 300;
-	fractal->x_offset = -2.1;
-	fractal->y_offset = -1.7;
+	fractal->x_offset = WIN_SX / -fractal->zoom / 1.375;
+	fractal->y_offset = WIN_SY / -fractal->zoom / 2;
+	fractal->type = 'm';
 	return (fractal);
 }
 

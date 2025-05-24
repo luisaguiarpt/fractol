@@ -4,7 +4,7 @@ INCM=mlx
 INCP=ft_printf
 LIBS=-lmlx -lXext -lX11 -lm
 
-SRCS=calc.c core.c utils.c fractol.c hooks.c print.c
+SRCS=calc.c core.c utils.c fractol.c hooks.c hooks_utils.c messages.c print.c
 
 OBJS=$(SRCS:%.c=%.o)
 

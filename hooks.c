@@ -16,55 +16,22 @@ int	key_hook(int key, t_core *core)
 		core->fractal->x_offset -= 100 / core->fractal->zoom;
 	else if (key == RIGHT)
 		core->fractal->x_offset += 100 / core->fractal->zoom;
-	else if (key == P)
-		core->psy_mode = (core->psy_mode == 0) * 1 + (core->psy_mode == 1) * 0;
+	else if (key == P || key == J || key == M || key == S || key == I)
+		key_hook_options(key, core);
 	else if (key == L_BRA || key == R_BRA)
 		key_hook_iter(key, core);
 	else if (key == PLUS || key == MINUS)
 		key_hook_zoom(key, core);
-	plot_set(core);
+	else if (key == C)
+		key_hook_color(key, core);
+	plot_set(core, get_set);
 	return (0);
 }
 
-int	key_hook_zoom(int key, t_core *core)
+int	key_hook_color(int key, t_core *core)
 {
-	t_complex	c;
-	int			x;
-	int			y;
-
-	x = WIN_SX / 2;
-	y = WIN_SY / 2;
-	c.r = (x / core->fractal->zoom) + core->fractal->x_offset;
-	c.i = (y / core->fractal->zoom) + core->fractal->y_offset;
-	if (key == PLUS)
-	{
-		core->fractal->zoom *= 1.25;
-		core->fractal->x_offset = c.r - (x / core->fractal->zoom);
-		core->fractal->y_offset = c.i - (y / core->fractal->zoom);
-	}
-	else if (key == MINUS)
-	{
-		core->fractal->zoom /= 1.25;
-		core->fractal->x_offset = c.r - (x / core->fractal->zoom);
-		core->fractal->y_offset = c.i - (y / core->fractal->zoom);
-	}
-	return (0);
-}
-
-int	key_hook_iter(int key, t_core *core)
-{
-	if (key == L_BRA)
-	{
-		if (core->fractal->max_iter > 100)
-			core->fractal->max_iter -= 100;
-		ft_printf("Iterations: %d\n", core->fractal->max_iter);
-	}
-	else if (key == R_BRA)
-	{
-		if (core->fractal->max_iter <= 1000)
-			core->fractal->max_iter += 100;
-		ft_printf("Iterations: %d\n", core->fractal->max_iter);
-	}
+	if (key == C)
+		change_color(core);
 	return (0);
 }
 
@@ -87,7 +54,7 @@ int	mouse_hook(int button, int x, int y, t_core *core)
 		core->fractal->x_offset = c.r - (x / core->fractal->zoom);
 		core->fractal->y_offset = c.i - (y / core->fractal->zoom);
 	}
-	plot_set(core);
+	plot_set(core, get_set);
 	return (0);
 }
 

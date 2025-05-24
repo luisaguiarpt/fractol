@@ -8,7 +8,7 @@ void	pixel_put(t_core *core, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	plot_set(t_core *core)
+void	plot_set(t_core *core, int (*set)(int, int, t_core *))
 {
 	int	x;
 	int	y;
@@ -22,7 +22,7 @@ void	plot_set(t_core *core)
 		y = 0;
 		while (y < WIN_SY)
 		{
-			i = calc_mandlebrot(x, y, core->fractal);
+			i = set(x, y, core);
 			if (i > cutoff)
 				pixel_put(core, x, y, 0);
 			else
