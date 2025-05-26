@@ -8,8 +8,8 @@
 # include "mlx/mlx_int.h"
 # include "keys.h"
 
-# define WIN_SX	1000
-# define WIN_SY 1000
+# define WIN_SX	1920
+# define WIN_SY 1080
 
 typedef struct	s_fractal
 {
@@ -19,6 +19,8 @@ typedef struct	s_fractal
 	double	y_offset;
 	int		intense;
 	char	type;
+	double	julia_cr;
+	double	julia_ci;
 }				t_fractal;
 
 typedef	struct	s_core
@@ -57,7 +59,9 @@ int	key_hook_zoom(int key, t_core *core);
 int	key_hook_options(int key, t_core *core);
 int	key_hook_color(int key, t_core *core);
 int	mouse_hook(int button, int x, int y, t_core *core);
+int	mouse_move_hook(int x, int y, t_core *core);
 int	psychadelic_hook(t_core *core);
+int	julia_hook(int x, int y, t_core *core);
 
 //	Put functions - print.c
 void	pixel_put(t_core *core, int x, int y, int color);

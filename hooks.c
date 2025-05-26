@@ -58,6 +58,13 @@ int	mouse_hook(int button, int x, int y, t_core *core)
 	return (0);
 }
 
+int	mouse_move_hook(int x, int y, t_core *core)
+{
+	if (core->fractal->type == 'j')
+		julia_hook(x, y, core);
+	return (0);
+}
+
 int	psychadelic_hook(t_core *core)
 {
 	int				i;

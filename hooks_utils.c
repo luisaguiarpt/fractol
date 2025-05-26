@@ -62,3 +62,15 @@ int	key_hook_options(int key, t_core *core)
 		return (1);
 	return (0);
 }
+
+int	julia_hook(int x, int y, t_core *core)
+{
+	static int	i;
+	core->fractal->julia_cr = (x / core->fractal->zoom) + core->fractal->x_offset;
+	core->fractal->julia_ci = (y / core->fractal->zoom) + core->fractal->y_offset;
+	ft_printf("Mouse at x=%d, y=%d.\n", x, y);
+	i++;
+	if (i % 10 == 0)
+		plot_set(core, get_set);
+	return (0);
+}

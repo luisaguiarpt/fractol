@@ -15,6 +15,7 @@ int	main(int ac, char **av)
 	disp_init_msg();
 	mlx_loop_hook(core->mlx, psychadelic_hook, core);
 	mlx_mouse_hook(core->win, mouse_hook, core);
+	mlx_hook(core->win, MotionNotify, PointerMotionMask, julia_hook, core);
 	mlx_key_hook(core->win, key_hook, core);
 	mlx_hook(core->win, DestroyNotify, 0, &close_program, core);
 	mlx_loop(core->mlx);

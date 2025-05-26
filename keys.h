@@ -21,5 +21,6 @@
 // Mousecodes
 # define SCR_UP		4
 # define SCR_DOWN	5
+# define R_CLICK	1
 
 #endif

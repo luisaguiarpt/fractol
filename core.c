@@ -43,6 +43,8 @@ t_fractal	*init_fractal(void)
 	fractal->x_offset = WIN_SX / -fractal->zoom / 1.375;
 	fractal->y_offset = WIN_SY / -fractal->zoom / 2;
 	fractal->type = 'm';
+	fractal->julia_cr = 0.0;
+	fractal->julia_ci = 0.0;
 	return (fractal);
 }
 

@@ -29,11 +29,11 @@ int	calc_julia(int x, int y, t_fractal *f)
 	double		zr_temp;
 	int			i;
 
-	c.r = (x / f->zoom) + f->x_offset;
-	c.i = (y / f->zoom) + f->y_offset;
+	z.r = (x / f->zoom) + f->x_offset;
+	z.i = (y / f->zoom) + f->y_offset;
 	i = 0;
-	z.r = c.r;
-	z.i = z.i;
+	c.r = f->julia_cr;
+	c.i = f->julia_ci;
 	while ((z.r * z.r + z.i * z.i) < 4 && i <= f->max_iter)
 	{
 		zr_temp = z.r * z.r - z.i * z.i + c.r;
