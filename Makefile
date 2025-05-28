@@ -15,14 +15,16 @@ NAME=fractol
 
 all: $(NAME)
 
-$(NAME): $(OBJS) makelibs
+$(NAME): $(OBJS) $(MLX) $(LIBFT)
 	$(CC) $(FLAGS) $(OBJS) $(MLX) $(LIBFT) -o $@ -I$(INCS) $(LIBS)
 
 %.o: %.c
 	$(CC) $(FLAGS) -c $< -o $@ -I$(INCM) -I$(INCL)
 
-makelibs:
+$(MLX):
 	make -C mlx/ all
+
+$(LIBFT):
 	make -C libft/ all
 
 clean:
@@ -35,3 +37,5 @@ fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
+
+.PHONY: all makelibs clean fclean re
