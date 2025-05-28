@@ -8,11 +8,13 @@
 # define DOWN	65364
 # define UP		65362
 # define P		112
+# define F		102
 # define J		106
 # define M		109
 # define I		105
-# define S		115
+# define N		110
 # define C		99
+# define R		114
 # define L_BRA	91
 # define R_BRA	93
 # define PLUS	65451
@@ -21,6 +23,5 @@
 // Mousecodes
 # define SCR_UP		4
 # define SCR_DOWN	5
-# define R_CLICK	1
 
 #endif

@@ -29,7 +29,7 @@ int	key_hook_iter(int key, t_core *core)
 {
 	if (key == L_BRA)
 	{
-		if (core->fractal->max_iter > 100)
+		if (core->fractal->max_iter > 50)
 			core->fractal->max_iter -= 50;
 		ft_printf("Iterations: %d\n", core->fractal->max_iter);
 	}
@@ -50,8 +50,8 @@ int	key_hook_options(int key, t_core *core)
 		core->fractal->type = 'j';
 	else if (key == M)
 		core->fractal->type = 'm';
-	else if (key == S)
-		core->fractal->type = 's';
+	else if (key == N)
+		core->fractal->type = 'n';
 	else if (key == I)
 	{
 		core->fractal->intense += 100;
@@ -66,8 +66,11 @@ int	key_hook_options(int key, t_core *core)
 int	julia_hook(int x, int y, t_core *core)
 {
 	static int	i;
-	core->fractal->julia_cr = (x / core->fractal->zoom) + core->fractal->x_offset;
-	core->fractal->julia_ci = (y / core->fractal->zoom) + core->fractal->y_offset;
+
+	core->fractal->julia_cr = (x / core->fractal->zoom)
+		+ core->fractal->x_offset;
+	core->fractal->julia_ci = (y / core->fractal->zoom)
+		+ core->fractal->y_offset;
 	ft_printf("Mouse at x=%d, y=%d.\n", x, y);
 	i++;
 	if (i % 10 == 0)

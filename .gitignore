@@ -1,8 +1,9 @@
 # Executable
 fractol
 
-# mlx
+# libs
 mlx/*
+libft/*/*
 
 # Swap files
 *.swp

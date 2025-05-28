@@ -1,34 +1,13 @@
 #include "fractol.h"
 
-char	param_check(int ac, char **av)
-{
-	if (ac < 2)
-	{
-		disp_options();
-		return (0);
-	}
-	if (!strcmp(av[1], "mandlebrot"))
-		return ('m');
-	else if (!strcmp(av[1], "julia"))
-		return ('j');
-	else if (!strcmp(av[1], "ship"))
-		return ('s');
-	else
-	{
-		wrong_options();
-		return (0);
-	}
-
-}
-
 int	get_set(int x, int y, t_core *core)
 {
 	if (core->fractal->type == 'm')
 		return (calc_mandlebrot(x, y, core->fractal));
 	else if (core->fractal->type == 'j')
 		return (calc_julia(x, y, core->fractal));
-//	else if (core->fractal->type == 's')
-//		return (calc_ship(x, y, core->fractal));
+	else if (core->fractal->type == 'n')
+		return (calc_newton(x, y, core->fractal));
 	return (1);
 }
 
@@ -41,6 +20,24 @@ void	get_endian(t_core *core)
 		core->endian = 1;
 	else
 		core->endian = 0;
+}
+
+void	reset_fractal(t_fractal *fractal)
+{
+	fractal->max_iter = 100;
+	fractal->zoom = 300;
+	if (fractal->type == 'm')
+	{
+		fractal->x_offset = WIN_SX / -fractal->zoom / 1.375;
+		fractal->y_offset = WIN_SY / -fractal->zoom / 2;
+	}
+	else
+	{
+		fractal->x_offset = WIN_SX / -fractal->zoom / 2;
+		fractal->y_offset = WIN_SY / -fractal->zoom / 2;
+	}
+	fractal->julia_cr = 0.0;
+	fractal->julia_ci = 0.0;
 }
 
 void	change_color(t_core *core)

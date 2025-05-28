@@ -16,13 +16,13 @@ int	key_hook(int key, t_core *core)
 		core->fractal->x_offset -= 100 / core->fractal->zoom;
 	else if (key == RIGHT)
 		core->fractal->x_offset += 100 / core->fractal->zoom;
-	else if (key == P || key == J || key == M || key == S || key == I)
+	else if (key == P || key == J || key == M || key == N || key == I)
 		key_hook_options(key, core);
 	else if (key == L_BRA || key == R_BRA)
 		key_hook_iter(key, core);
 	else if (key == PLUS || key == MINUS)
 		key_hook_zoom(key, core);
-	else if (key == C)
+	else if (key == C || key == R || key == F)
 		key_hook_color(key, core);
 	plot_set(core, get_set);
 	return (0);
@@ -32,6 +32,12 @@ int	key_hook_color(int key, t_core *core)
 {
 	if (key == C)
 		change_color(core);
+	else if (key == R)
+		reset_fractal(core->fractal);
+	else if (key == F && core->fractal->follow_mouse == 0)
+		core->fractal->follow_mouse = 1;
+	else if (key == F && core->fractal->follow_mouse == 1)
+		core->fractal->follow_mouse = 0;
 	return (0);
 }
 
@@ -60,7 +66,7 @@ int	mouse_hook(int button, int x, int y, t_core *core)
 
 int	mouse_move_hook(int x, int y, t_core *core)
 {
-	if (core->fractal->type == 'j')
+	if (core->fractal->type == 'j' && core->fractal->follow_mouse)
 		julia_hook(x, y, core);
 	return (0);
 }
