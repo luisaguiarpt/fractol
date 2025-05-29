@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 00:00:31 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/29 00:00:50 by ldias-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	key_hook(int key, t_core *core)
@@ -89,5 +101,5 @@ int	psychadelic_hook(t_core *core)
 		i++;
 	}
 	mlx_put_image_to_window(core->mlx, core->win, core->img, 0, 0);
-	return 0;
+	return (0);
 }

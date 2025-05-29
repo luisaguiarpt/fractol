@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 00:01:25 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/29 18:21:19 by ldias-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	get_set(int x, int y, t_core *core)
@@ -24,7 +36,7 @@ void	get_endian(t_core *core)
 
 void	reset_fractal(t_fractal *fractal)
 {
-	fractal->max_iter = 100;
+	fractal->max_iter = 30;
 	fractal->zoom = 300;
 	if (fractal->type == 'm')
 	{

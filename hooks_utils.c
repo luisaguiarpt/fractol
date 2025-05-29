@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/29 00:01:05 by ldias-da          #+#    #+#             */
+/*   Updated: 2025/05/29 18:19:04 by ldias-da         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
 int	key_hook_zoom(int key, t_core *core)
@@ -30,13 +42,13 @@ int	key_hook_iter(int key, t_core *core)
 	if (key == L_BRA)
 	{
 		if (core->fractal->max_iter > 50)
-			core->fractal->max_iter -= 50;
+			core->fractal->max_iter -= 20;
 		ft_printf("Iterations: %d\n", core->fractal->max_iter);
 	}
 	else if (key == R_BRA)
 	{
 		if (core->fractal->max_iter <= 1000)
-			core->fractal->max_iter += 50;
+			core->fractal->max_iter += 20;
 		ft_printf("Iterations: %d\n", core->fractal->max_iter);
 	}
 	return (0);

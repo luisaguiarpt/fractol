@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 00:02:34 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 00:11:22 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:05:28 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include "mlx/mlx_int.h"
 # include "keys.h"
 
-# define WIN_SX	720
-# define WIN_SY 640
+# define WIN_SX	1080
+# define WIN_SY	720
 
 typedef struct s_newton
 {
-	double	bailout_calc;
+	double	bail_calc;
 	double	zi_prev;
 	double	r2;
 	double	i2;
@@ -73,7 +73,7 @@ int			calc_mandlebrot(int x, int y, t_fractal *f);
 int			calc_julia(int x, int y, t_fractal *f);
 int			calc_newton(int x, int y, t_fractal *f);
 void		newton_aux(t_complex *z, t_newton *n);
-int			check_conv(t_complex z);
+int			check_conv(t_complex z, t_fractal *f);
 
 //	Struct functions - core.c
 t_fractal	*init_fractal(void);

@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 17:54:41 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/28 21:55:09 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/29 18:18:28 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ void	init_core(t_core *core)
 	if (!core->img)
 		exit(1);
 	get_endian(core);
-	core->img_addr = mlx_get_data_addr(core->img, &core->bpp, &core->line_len, &core->endian);
+	core->img_addr = mlx_get_data_addr(core->img, &core->bpp,
+			&core->line_len, &core->endian);
 	core->fractal = init_fractal();
 	core->color = 0x00f00f0;
 	core->psy_mode = 0;
-	core->fractal->intense = 169;
+	core->fractal->intense = 100;
 }
 
 t_fractal	*init_fractal(void)
