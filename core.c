@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 17:54:41 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 18:18:28 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:57:29 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_fractal	*init_fractal(void)
 	fractal = malloc(sizeof(t_fractal));
 	if (!fractal)
 		exit(1);
-	reset_fractal(fractal);
 	fractal->type = 0;
 	fractal->follow_mouse = 0;
+	reset_fractal(fractal);
 	fractal->n = init_newton();
 	return (fractal);
 }

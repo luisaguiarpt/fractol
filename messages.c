@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 15:59:16 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/28 21:26:56 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 11:53:18 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	disp_init_msg(void)
 int	disp_options(void)
 {
 	ft_printf("\n");
-	ft_printf("No parameter passed.                       \n");
-	ft_printf("Usage: './fractol <set> <option>'          \n");
-	ft_printf("set: 'mandlebrot', 'julia', 'newton'       \n");
-	ft_printf("option (only for julia):                   \n");
-	ft_printf("	   1 - 5 for different julia fractals     \n");
+	ft_printf("No parameter passed.                          \n");
+	ft_printf("Usage: './fractol <set> <option1> <option2>'  \n");
+	ft_printf("set: 'mandlebrot', 'julia', 'newton'          \n");
+	ft_printf("options (only for julia):                     \n");
+	ft_printf("	   real and imaginary coordinates for c      \n");
 	ft_printf("\n");
 	return (0);
 }
@@ -52,7 +52,7 @@ int	wrong_options(void)
 	ft_printf("\n");
 	ft_printf(" Wrong parameter(s) passed.                         \n");
 	ft_printf(" Available sets: 'mandlebrot', 'julia', 'newton'    \n");
-	ft_printf(" Option only possible for julia (1 - 5) .           \n");
+	ft_printf(" Options only possible for julia (cr, ci).      \n");
 	ft_printf("\n");
 	return (0);
 }
