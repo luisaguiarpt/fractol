@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 00:01:25 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 18:21:19 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:03:10 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	reset_fractal(t_fractal *fractal)
 {
 	fractal->max_iter = 30;
 	fractal->zoom = 300;
-	if (fractal->type == 'm')
+	if (fractal->type == 'm' || fractal->type == 0)
 	{
 		fractal->x_offset = WIN_SX / -fractal->zoom / 1.375;
 		fractal->y_offset = WIN_SY / -fractal->zoom / 2;

@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 00:02:34 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 18:05:28 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 14:28:15 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include "mlx/mlx_int.h"
 # include "keys.h"
 
-# define WIN_SX	1080
-# define WIN_SY	720
+# define WIN_SX	720
+# define WIN_SY	640
 
 typedef struct s_newton
 {

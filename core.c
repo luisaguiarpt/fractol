@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 17:54:41 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/30 11:57:29 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:00:01 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ t_newton	*init_newton(void)
 
 int	close_program(t_core *core)
 {
-	mlx_destroy_image(core->mlx, core->img);
-	mlx_destroy_window(core->mlx, core->win);
-	mlx_destroy_display(core->mlx);
+	if (core->img)
+		mlx_destroy_image(core->mlx, core->img);
+	if (core->win)
+		mlx_destroy_window(core->mlx, core->win);
+	if (core->mlx)
+		mlx_destroy_display(core->mlx);
 	free(core->fractal->n);
 	free(core->fractal);
 	free(core->mlx);
 	free(core);
-	exit (0);
+	exit (1);
 }

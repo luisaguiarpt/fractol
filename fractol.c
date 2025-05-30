@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 00:00:19 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 00:00:23 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 15:57:10 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	main(int ac, char **av)
 {
 	t_core	*core;
 
+	if (!pre_check(ac, av))
+		exit(1);
 	core = malloc(sizeof(t_core));
 	if (!core)
-		exit(1);
-	if (!pre_check(ac, av))
 		exit(1);
 	init_core(core);
 	if (!param_check(ac, av, core->fractal))

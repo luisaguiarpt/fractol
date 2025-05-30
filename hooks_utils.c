@@ -6,7 +6,7 @@
 /*   By: ldias-da <ldias-da@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 00:01:05 by ldias-da          #+#    #+#             */
-/*   Updated: 2025/05/29 18:19:04 by ldias-da         ###   ########.fr       */
+/*   Updated: 2025/05/30 16:04:20 by ldias-da         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	key_hook_iter(int key, t_core *core)
 {
 	if (key == L_BRA)
 	{
-		if (core->fractal->max_iter > 50)
+		if (core->fractal->max_iter > 20)
 			core->fractal->max_iter -= 20;
 		ft_printf("Iterations: %d\n", core->fractal->max_iter);
 	}
